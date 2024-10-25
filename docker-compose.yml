@@ -6,10 +6,12 @@ services:
     env_file:
       - ./environment/api.env
     ports:
-      - "3000:3000"
+      - "3002:3002"
     environment:
-      - PORT=3000
+      - PORT=3002
     command: node server.js
+    links:
+      - mongo
     depends_on:
       - mongo
 
@@ -18,7 +20,8 @@ services:
     env_file:
       - ./environment/mongodb.env
     volumes:
-      - astro-mongo-storage:/data/db
+      - ./docker-entrypoint-initdb.d/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
     ports:
       - 27017:27017
 
