@@ -2,8 +2,14 @@
 
 // Setup express
 const express = require("express")
+const cors = require('cors');
 const app = express()
 const log = require("./utils/log")
+
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+}));
 
 // Environment Variables
 const { PORT, MONGO_HOST, MONGO_USERNAME, MONGO_PASSWORD, MONGO_PORT } = require("./config/config")
