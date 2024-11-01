@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main {
+  padding: 2rem;
+}
+
+main[inert]:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+[aria-hidden="true"] {
+  display: none;
+}
+
+.modal {
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 90vw;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.close-modal {
+  font-size: 2rem;
+  position: absolute;
+  right: 1rem;
+  top: 0rem;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+}
