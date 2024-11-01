@@ -29,20 +29,8 @@ connectToDB = () => {
 
 connectToDB(true)
 
-const schema = new mongoose.Schema({ firstName: String, lastName: String });
-const User = mongoose.model('User', schema);
 
-// This is an example route, feel free to delete it.
-app.get("/", async (req, res) => {
-
-    const users = await User.find({});
-
-    res.status(200).json({
-        success: true,
-        message: "Hello World!",
-        users: users,
-    })
-})
+app.use(require('./routes'))
 
 // Listen on a port!
 app.listen(PORT, () => log(`Server listening on port ${PORT}!`, 'green'))
