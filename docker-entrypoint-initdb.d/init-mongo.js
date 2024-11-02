@@ -7,14 +7,3 @@ db.createUser({
     pwd: process.env.MONGO_PASSWORD,
     roles: [{"role":"readWrite", db: 'default'}],
 });
-db.createCollection('users');
-db.users.insertMany([
-{
-    "firstName": "Perry",
-    "lastName": "Trinier"
-},
-{
-    "firstName": "Michdowelle",
-    "lastName": "Trinier"
-}
-])

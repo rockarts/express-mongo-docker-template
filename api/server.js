@@ -8,7 +8,7 @@ const log = require("./utils/log")
 
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: '*',
 }));
 
 // Environment Variables
