@@ -10,4 +10,4 @@ services:
         NODE_ENV: development
     command: npm run dev
     environment:
-      - NODE_ENV=developmet
+      - NODE_ENV=development
