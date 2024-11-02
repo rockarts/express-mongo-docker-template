@@ -21,6 +21,8 @@ services:
       - ./environment/mongodb.env
     volumes:
       - ./docker-entrypoint-initdb.d/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./docker-entrypoint-initdb.d/users.json:/tmp/users.json:ro
+      - ./docker-entrypoint-initdb.d/testerEngagementSummaries.json:/docker-entrypoint-initdb.d/testerEngagementSummaries.json:ro
 
     ports:
       - 27017:27017
@@ -38,6 +40,3 @@ services:
     command: npm start
     depends_on:
       - api
-
-volumes:
-  astro-mongo-storage:
