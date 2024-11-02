@@ -5,10 +5,10 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-
+    const apiUrl = document.location.href.replace(3000,3002)+'metrics';
     fetch(apiUrl)
       .then((res) => {
+        console.log(res);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
@@ -18,6 +18,7 @@ function App() {
         setUsers(data);
       })
       .catch((error) => {
+        console.log(error);
         console.error('Error fetching data:', error);
       });
   }, []);
