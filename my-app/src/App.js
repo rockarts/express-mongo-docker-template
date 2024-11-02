@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+    fetch(apiUrl)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="table">
+          <div className="table__heading">
+              <div className="table__row">
+                  <div>First name</div>
+                  <div>Last name</div>
+              </div>
+          </div>
+          <div>
+            {users.map((user, index) => (
+              <div className="table__row" key={index}>
+                <div>{user.firstName}</div>
+                <div>{user.lastName}</div>
+              </div>
+            ))}
+          </div>
+      </div>
     </div>
   );
 }
