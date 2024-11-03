@@ -15,7 +15,7 @@ const engagementSummarySchema = new Schema({
   endDate: Date,
 });
 const User = mongoose.model("User", userSchema);
-const EngagmentSummary = mongoose.model(
+const EngagementSummary = mongoose.model(
   "EngagementSummary",
   engagementSummarySchema,
   "testerEngagementSummaries"
