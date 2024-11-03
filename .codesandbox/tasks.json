@@ -1,0 +1,23 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "command": "chmod +x ./start.sh && ./start.sh",
+      "name": "."
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "docker exec -it workspace-mongo-1 bash ": {
+      "name": "MongoDB shell",
+      "command": "docker exec -it workspace-mongo-1 bash ",
+      "runAtStart": true
+    },
+    "docker logs workspace-api-1 --follow": {
+      "name": "Express API logs",
+      "command": "docker logs workspace-api-1 --follow",
+      "runAtStart": true
+    }
+  }
+}
