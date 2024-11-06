@@ -14,10 +14,6 @@
   background: #dfdfe4
 }
 
-.table__row {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-}
 
 .table__row div {
   background-color: #fff;
