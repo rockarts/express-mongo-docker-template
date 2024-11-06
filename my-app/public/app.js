@@ -1,4 +1,4 @@
-class SortModal {
+ class SortModal {
   constructor(trigger) {
     this.trigger = trigger;
     this.cacheDOM();

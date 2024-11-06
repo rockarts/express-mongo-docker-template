@@ -44,6 +44,41 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    const handleSortChange = (event) => {
+      if (event.target.matches('[data-sort-option]')) {
+        const sortOption = event.target.value;
+        
+        const sortedUsers = [...users].sort((a, b) => {
+          const fullNameA = `${a.firstName} ${a.lastName}`;
+          const fullNameB = `${b.firstName} ${b.lastName}`;
+          
+          if (sortOption === 'nameAsc') {
+            return fullNameA.localeCompare(fullNameB);
+          } else if (sortOption === 'nameDesc') {
+            return fullNameB.localeCompare(fullNameA);
+          } else if (sortOption === 'totalHoursWorkedDesc') {
+            return a.totalHours < b.totalHours
+          } else if (sortOption === 'totalHoursWorkedAsc') {
+            return a.totalHours > b.totalHours
+          }
+
+          return 0;
+        });
+
+        setUsers(sortedUsers);
+      }
+    };
+
+    // Listen for changes on the entire document since the modal is outside React
+    document.addEventListener('change', handleSortChange);
+
+    // Cleanup listener when component unmounts
+    return () => {
+      document.removeEventListener('change', handleSortChange);
+    };
+  }, [users]);
+
   return (
     <>
     <div className="App">
